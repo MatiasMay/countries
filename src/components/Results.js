@@ -3,13 +3,13 @@ import Country from "./Country";
 import OneCountry from "./OneCountry";
 
 const Results = ({countriesToShow, handleCountryFilter, handleWeather,weather}) => {
-    //Esta parte llama a la funcion que checa el clima, solo si ha cambiado la lista de paises a mostrar y solo cambia si solo hay un pais (por ahora)
+    //This part calls the const that changes weather, but only if the result is only one country
     useEffect(() => {
         if (countriesToShow.length == 1){
             handleWeather()
         }
     },[countriesToShow])
-    //Checamos que tipo de situacion es y devolvemos un mensaje, una lista de paises o un pais dependiendo de la situacion
+    //Checks the situation and shows a result according to the number of resulting countries
     if(countriesToShow.length > 10){
         return <p>Too many matches, specify another filter</p>
     }else{

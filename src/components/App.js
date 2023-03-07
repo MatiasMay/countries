@@ -10,18 +10,18 @@ const App = () => {
     const [weather, setWeather] = useState({'current':{'temperature':0,'weather_icons':[''],'wind_speed':0,'wind_dir':''}})
     const [lastWeather, setLastWeather] = useState('')
     const [countryFilter, setCountryFilter] = useState('')
-    //El useEffect de donde se saca la lista de paises
+    //The useEffect that shows the list of countries
     useEffect (() => {
         axios.get('https://restcountries.com/v2/all')
         .then((response) => {
             setCountries(response.data)
         })
     },[])
-    //Handler para el filtro de paises
+    //Handler for country filter
     const handleCountryFilter = (event) => {
         setCountryFilter(event.target.value)
     }
-    //Un handler que cambia los datos de weather, pero solo lo hace si no son los mismos que los últimos que se pidieron (extremadamente necesario para no gastar API)
+    //A handler that changes the weather part, but only if not the same capital as the last search (I don't have unlimited searches)
     const handleWeather = () => {
         if (lastWeather !== countriesToShow[0].capital){
             setLastWeather(countriesToShow[0].capital)

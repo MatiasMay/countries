@@ -1,5 +1,5 @@
 import React from "react";
-//Aqui devolvemos los datos de un solo pais
+//Returning data from a country
 const OneCountry = ({Countr, weather}) => {
     return(<div>
         <h1>{Countr.name}</h1>
